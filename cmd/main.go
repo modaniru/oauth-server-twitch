@@ -14,10 +14,10 @@ import (
 	"gorm.io/gorm"
 )
 
-func main(){
+func main() {
 	dsn := "host=localhost user=postgres password=qwerty dbname=postgres port=5556 sslmode=disable"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil{
+	if err != nil {
 		log.Fatal(err.Error())
 	}
 	repository := repository.NewRepository(db)

@@ -1,23 +1,25 @@
 package repository
 
 import (
+	"github.com/modaniru/api-for-users/src/model"
 	"github.com/modaniru/api-for-users/src/utils"
 	"gorm.io/gorm"
 )
 
-const(
+const (
 	userTable = "users"
 )
 
-type Repository struct{
+type Repository struct {
 	IUserRepository
 }
 
-type IUserRepository interface{
+type IUserRepository interface {
 	Login(user *utils.UserInfo) (int, error)
+	GetById(id int) (*model.User, error)
 }
 
-func NewRepository(db *gorm.DB) *Repository{
+func NewRepository(db *gorm.DB) *Repository {
 	return &Repository{
 		IUserRepository: NewUserRepository(db),
 	}

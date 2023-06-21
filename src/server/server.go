@@ -5,11 +5,11 @@ import (
 	"time"
 )
 
-type server struct{
+type server struct {
 	server *http.Server
 }
 
-func NewServer(handler http.Handler, port string) *server{
+func NewServer(handler http.Handler, port string) *server {
 	return &server{
 		server: &http.Server{
 			Handler:        handler,
@@ -21,6 +21,6 @@ func NewServer(handler http.Handler, port string) *server{
 	}
 }
 
-func (s *server) Run(){
+func (s *server) Run() {
 	s.server.ListenAndServe()
 }

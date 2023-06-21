@@ -7,17 +7,17 @@ import (
 	"github.com/modaniru/api-for-users/src/model"
 )
 
-func (h *Handler) signIn(c *gin.Context){
+func (h *Handler) signIn(c *gin.Context) {
 	var access model.AccessToken
 	err := c.BindJSON(&access)
-	if err != nil{
+	if err != nil {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"message": err.Error(),
 		})
 		return
 	}
 	token, err := h.service.IUserService.Login(access.AccessToken)
-	if err != nil{
+	if err != nil {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"message": err.Error(),
 		})
